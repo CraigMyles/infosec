@@ -1,13 +1,17 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Management;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.WebRequestMethods;
 
 namespace infosecQuiz
 {
@@ -18,17 +22,58 @@ namespace infosecQuiz
             InitializeComponent();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        public class API_Response
         {
-
+            public bool IsError { get; set; }
+            public string ErrorMessage { get; set; }
+            public string ResponseData { get; set; }
         }
+
+        public class Login_Request
+        {
+            public string username { get; set; }
+            public string password { get; set; }
+        }
+
 
         private void loginButton_Click(object sender, EventArgs e)
         {
             if (!username.Text.Equals("") && !password.Text.Equals(""))
             {
+
                 //Check if username + passwords match on db
+                //check database for entries
+                string apiUrl = "https://craig.im/infosec.php";
+                string apiMethod = "userLogin";
+                Login_Request myLogin_Request = new Login_Request()
+                {
+                    username = username.Text,
+                    password = password.Text
+                };
+
+                // make http post request
+                string response = Http.Post(apiUrl, new NameValueCollection()
+                {
+                    { "api_method", apiMethod},
+                    { "api_data",   JsonConvert.SerializeObject(myLogin_Request) }
+                });
+
+                // decode json string to dto object
+                //System.Diagnostics.Debug.WriteLine("finna crash here");
+                API_Response r = JsonConvert.DeserializeObject<API_Response>(response);
+
+                // check response
+                if (!r.IsError && r.ResponseData == "SUCCESS")
+                {
+                    MessageBox.Show("login successful");
+                    //code for 
+                }
+                else
+                {
+                    MessageBox.Show("ERROR: "+ r.ErrorMessage);
+                }
             }
+
             else if (username.Text.Equals("") || password.Text.Equals(""))
             {
                 MessageBox.Show("You cannot leave the fields blank.");
@@ -38,22 +83,20 @@ namespace infosecQuiz
                 MessageBox.Show("An error has occured.");
             }
 
-            ////testing CPU number and username
+            
+        }
 
-            //string cpuInfo = string.Empty;
-            //ManagementClass mc = new ManagementClass("win32_processor");
-            //ManagementObjectCollection moc = mc.GetInstances();
-
-            //foreach (ManagementObject mo in moc)
-            //{
-            //    if (cpuInfo == "")
-            //    {
-            //        //Get only the first CPU's ID
-            //        cpuInfo = mo.Properties["processorID"].Value.ToString();
-            //        break;
-            //    }
-            //}
-            //MessageBox.Show("Environment Username = "+Environment.UserName+"\nProcessorID ="+ cpuInfo);
+        public static class Http
+        {
+            public static String Post(string uri, NameValueCollection pairs)
+            {
+                byte[] response = null;
+                using (WebClient client = new WebClient())
+                {
+                    response = client.UploadValues(uri, pairs);
+                }
+                return Encoding.Default.GetString(response);
+            }
         }
 
         private void usernameLabel_Click(object sender, EventArgs e)
@@ -71,4 +114,23 @@ namespace infosecQuiz
 
         }
     }
+
+    ////testing CPU number and username
+
+    //string cpuInfo = string.Empty;
+    //ManagementClass mc = new ManagementClass("win32_processor");
+    //ManagementObjectCollection moc = mc.GetInstances();
+
+    //foreach (ManagementObject mo in moc)
+    //{
+    //    if (cpuInfo == "")
+    //    {
+    //        //Get only the first CPU's ID
+    //        cpuInfo = mo.Properties["processorID"].Value.ToString();
+    //        break;
+    //    }
+    //}
+    //MessageBox.Show("Environment Username = "+Environment.UserName+"\nProcessorID ="+ cpuInfo);
 }
+
+

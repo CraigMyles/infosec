@@ -44,7 +44,6 @@
             this.username.Name = "username";
             this.username.Size = new System.Drawing.Size(242, 44);
             this.username.TabIndex = 0;
-            this.username.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // usernameLabel
             // 
