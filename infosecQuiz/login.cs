@@ -66,11 +66,10 @@ namespace infosecQuiz
                 if (!r.IsError && r.ResponseData == "SUCCESS")
                 {
                     MessageBox.Show("login successful");
-                    //code for 
                 }
                 else
                 {
-                    MessageBox.Show("ERROR: "+ r.ErrorMessage);
+                    MessageBox.Show("ERROR: " + r.ErrorMessage);
                 }
             }
 
@@ -83,7 +82,7 @@ namespace infosecQuiz
                 MessageBox.Show("An error has occured.");
             }
 
-            
+
         }
 
         public static class Http
@@ -114,23 +113,6 @@ namespace infosecQuiz
 
         }
     }
-
-    ////testing CPU number and username
-
-    //string cpuInfo = string.Empty;
-    //ManagementClass mc = new ManagementClass("win32_processor");
-    //ManagementObjectCollection moc = mc.GetInstances();
-
-    //foreach (ManagementObject mo in moc)
-    //{
-    //    if (cpuInfo == "")
-    //    {
-    //        //Get only the first CPU's ID
-    //        cpuInfo = mo.Properties["processorID"].Value.ToString();
-    //        break;
-    //    }
-    //}
-    //MessageBox.Show("Environment Username = "+Environment.UserName+"\nProcessorID ="+ cpuInfo);
 }
 
 
