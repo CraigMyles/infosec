@@ -25,6 +25,7 @@ namespace infosecQuiz
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //settings for machine authorisaiton
 
         }
 
