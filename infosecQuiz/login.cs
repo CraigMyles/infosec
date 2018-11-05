@@ -65,7 +65,11 @@ namespace infosecQuiz
                 // check response
                 if (!r.IsError && r.ResponseData == "SUCCESS")
                 {
-                    MessageBox.Show("login successful");
+                    string teacherUsername = username.Text;
+                    loginMenu myForm = new loginMenu(teacherUsername);
+                    this.Hide();
+                    myForm.ShowDialog();
+                    this.Show();
                 }
                 else
                 {
