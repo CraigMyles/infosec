@@ -1,6 +1,6 @@
 ﻿namespace infosecQuiz
 {
-    partial class Form1
+    partial class quiz
     {
         /// <summary>
         /// Required designer variable.

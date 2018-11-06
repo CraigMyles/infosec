@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace infosecQuiz
 {
-    public partial class Form1 : Form
+    public partial class quiz : Form
     {
-        public Form1()
+        public quiz()
         {
             InitializeComponent();
         }
