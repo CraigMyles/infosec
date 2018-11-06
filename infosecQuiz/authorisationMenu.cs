@@ -131,7 +131,7 @@ namespace infosecQuiz
                     { "api_data",   JsonConvert.SerializeObject(thisComputer_Authorise) }
                 });
 
-            // decode json string to object
+            // decode json string
             //API_Response r = JsonConvert.DeserializeObject<API_Response>(response);
             API_Response r = JsonConvert.DeserializeObject<API_Response>(response);
 
