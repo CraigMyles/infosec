@@ -58,8 +58,7 @@ namespace infosecQuiz
                     { "api_data",   JsonConvert.SerializeObject(myLogin_Request) }
                 });
 
-                // decode json string to dto object
-                //System.Diagnostics.Debug.WriteLine("finna crash here");
+                // decode json string to object
                 API_Response r = JsonConvert.DeserializeObject<API_Response>(response);
 
                 // check response

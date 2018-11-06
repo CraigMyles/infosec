@@ -78,6 +78,19 @@ namespace infosecQuiz
                     { "api_method", apiMethod},
                     { "api_data",   JsonConvert.SerializeObject(thisComputer_Authorise) }
                 });
+
+            // decode json string to object
+            API_Response r = JsonConvert.DeserializeObject<API_Response>(response);
+
+            // check response
+            if (!r.IsError && r.ResponseData == "SUCCESS")
+            {
+                MessageBox.Show("This machine has been added successfully.");
+            }
+            else
+            {
+                MessageBox.Show("ERROR: " + r.ErrorMessage);
+            }
         }
 
         public static class Http
@@ -91,11 +104,46 @@ namespace infosecQuiz
                 }
                 return Encoding.Default.GetString(response);
             }
+
+
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            //Add this computer to the auth list
+
+            string apiUrl = "https://craig.im/infosec.php";
+            string apiMethod = "listCPU";
+            Computer_Authorise thisComputer_Authorise = new Computer_Authorise()
+            {
+
+            };
+
+            // make http post request
+            string response = Http.Post(apiUrl, new NameValueCollection()
+                {
+                    { "api_method", apiMethod},
+                    { "api_data",   JsonConvert.SerializeObject(thisComputer_Authorise) }
+                });
+
+            // decode json string to object
+            //API_Response r = JsonConvert.DeserializeObject<API_Response>(response);
+            API_Response r = JsonConvert.DeserializeObject<API_Response>(response);
+
+            // check response
+            if (!r.IsError)
+            {
+                MessageBox.Show("Success: "+r.ResponseData);
+            }
+            else
+            {
+                MessageBox.Show("ERROR: " + r.ErrorMessage);
+            }
         }
     }
 }
