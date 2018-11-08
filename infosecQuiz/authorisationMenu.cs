@@ -19,7 +19,7 @@ namespace infosecQuiz
         {
             public bool IsError { get; set; }
             public string ErrorMessage { get; set; }
-            public string ResponseData { get; set; }
+            public dynamic ResponseData { get; set; }
         }
 
         public class Computer_Authorise
