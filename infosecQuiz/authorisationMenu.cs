@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Specialized;
+using System.Data;
 using System.Management;
 using System.Net;
 using System.Text;
@@ -10,6 +11,8 @@ namespace infosecQuiz
 {
     public partial class authorisationMenu : Form
     {
+        public string ResponseData { get; private set; }
+
         public authorisationMenu()
         {
             InitializeComponent();
@@ -132,12 +135,53 @@ namespace infosecQuiz
             // check response
             if (!r.IsError)
             {
-                MessageBox.Show("Success: "+r.ResponseData);
+                MessageBox.Show(""+r.ResponseData);
             }
             else
             {
                 MessageBox.Show("ERROR: " + r.ErrorMessage);
             }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+
+            dt.Columns.Add("Common Name");
+            dt.Columns.Add("Processor");
+
+            //GET DATA
+            string apiUrl = "https://craig.im/infosec.php";
+            string apiMethod = "listCPU";
+            Computer_Authorise thisComputer_Authorise = new Computer_Authorise()
+            {
+
+            };
+
+            // make http post request
+            string response = Http.Post(apiUrl, new NameValueCollection()
+                {
+                    { "api_method", apiMethod},
+                    { "api_data",   JsonConvert.SerializeObject(thisComputer_Authorise) }
+                });
+
+            // decode json string
+            //API_Response r = JsonConvert.DeserializeObject<API_Response>(response);
+            API_Response r = JsonConvert.DeserializeObject<API_Response>(response);
+            //List<r> r = r.ResponseData.ToObject<List<r>>();
+
+            //var result = JsonConvert.DeserializeObject<API_Response>(r.ResponseData);
+            dt.Rows.Add(new Object[] r.ResponseData);
+
+
+
+            dataGridView1.DataSource = dt;
         }
     }
 }
