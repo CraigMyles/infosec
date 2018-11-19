@@ -115,6 +115,11 @@ namespace infosecQuiz
         {
 
         }
+
+        private void username_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

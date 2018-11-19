@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Data;
 using System.Management;
@@ -11,7 +12,11 @@ namespace infosecQuiz
 {
     public partial class authorisationMenu : Form
     {
-        public string ResponseData { get; private set; }
+        public class RootObject
+        {
+            public string commonName { get; set; }
+            public string processorID { get; set; }
+        }
 
         public authorisationMenu()
         {
@@ -27,8 +32,8 @@ namespace infosecQuiz
 
         public class Computer_Authorise
         {
-            public string commonName { get; internal set; }
-            public string processorID { get; internal set; }
+            public string commonName { get; set; }
+            public string processorID { get; set; }
         }
 
         private void authorisationMenu_Load(object sender, EventArgs e)
@@ -135,7 +140,7 @@ namespace infosecQuiz
             // check response
             if (!r.IsError)
             {
-                MessageBox.Show(""+r.ResponseData);
+                MessageBox.Show("" + r.ResponseData);
             }
             else
             {
@@ -145,7 +150,7 @@ namespace infosecQuiz
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
 
         }
 
@@ -173,15 +178,23 @@ namespace infosecQuiz
 
             // decode json string
             //API_Response r = JsonConvert.DeserializeObject<API_Response>(response);
-            API_Response r = JsonConvert.DeserializeObject<API_Response>(response);
+            //r = JsonConvert.DeserializeObject<API_Response>(response);
             //List<r> r = r.ResponseData.ToObject<List<r>>();
 
             //var result = JsonConvert.DeserializeObject<API_Response>(r.ResponseData);
-            dt.Rows.Add(new Object[] r.ResponseData);
+            //dt.Rows.Add(new Object[] r);
+
+
+            //Rootobject r = JsonConvert.DeserializeObject<Rootobject>(response);
+            //dt.Rows.Add(new Object[] r);
+
+            //MessageBox.Show();
+             API_Response r = JsonConvert.DeserializeObject<List<RootObject>>(response);
 
 
 
-            dataGridView1.DataSource = dt;
+
+            //dataGridView1.DataSource = dt;
         }
-    }
+}
 }
