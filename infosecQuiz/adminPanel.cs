@@ -33,6 +33,13 @@ namespace infosecQuiz
             public string ErrorMessage { get; set; }
             public RootObject[] ResponseData { get; set; }
         }
+
+        public class GetUsers
+        {
+            public string userID { get; set; }
+            public string username { get; set; }
+        }
+
         public static class Http
         {
             public static String Post(string uri, NameValueCollection pairs)
@@ -68,13 +75,17 @@ namespace infosecQuiz
             //GET DATA
             string apiUrl = "https://craig.im/infosec.php";
             string apiMethod = "getUsers";
+            GetUsers thisGetUsers = new GetUsers()
+            {
+
+            };
 
 
             //Make http post request
             string response = Http.Post(apiUrl, new NameValueCollection()
                 {
                     { "api_method", apiMethod},
-                    { "api_data", "" }
+                    { "api_data",   JsonConvert.SerializeObject(thisGetUsers) }
                 });
 
             //Deserialise
@@ -85,29 +96,32 @@ namespace infosecQuiz
             // Set to details view.
             listView2.View = View.Details;
             // Add both columns.
-            listView2.Columns.Add("User ID", 200, HorizontalAlignment.Left);
-            listView2.Columns.Add("Username", 200, HorizontalAlignment.Left);
+            listView2.Columns.Add("User ID", 50, HorizontalAlignment.Left);
+            listView2.Columns.Add("Username", 330, HorizontalAlignment.Left);
 
             //fill with data
-            MessageBox.Show("" + r.ResponseData);
-            //int lim = r.ResponseData.Length;
+            int lim = r.ResponseData.Length;
 
-
-            //Console.WriteLine("Beginning loop for data fill.");
-            //for (int i = 0; i <= (lim); i++)
-            //{
-            //    Console.WriteLine("This is loop number " + i);
-            //    string[] row = { r.ResponseData[i].userID, r.ResponseData[i].username };
-            //    var listViewItem = new ListViewItem(row);
-            //    listView2.Items.Add(listViewItem);
-            //    row = null;
-            //}
+            for (int i = 0; i <= (lim-1); i++)
+            {
+                Console.WriteLine("This is loop number " + i);
+                string[] row = { r.ResponseData[i].userID, r.ResponseData[i].username };
+                var listViewItem = new ListViewItem(row);
+                listView2.Items.Add(listViewItem);
+                row = null;
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             //REFRESH USERS
             getUserList();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            //BACK BUTTON
+            this.Close();
         }
     }
 }

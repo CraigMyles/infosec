@@ -30,22 +30,22 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
+            this.listView1 = new System.Windows.Forms.ListView();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.button3 = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.button1 = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.button2 = new System.Windows.Forms.Button();
             this.listView2 = new System.Windows.Forms.ListView();
             this.tabControl3 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.button3 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             this.tabControl2.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.tabControl3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,18 +72,23 @@
             this.tabPage1.Text = "Questions";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // button1
             // 
-            this.tabPage2.Controls.Add(this.button2);
-            this.tabPage2.Controls.Add(this.listView2);
-            this.tabPage2.Controls.Add(this.tabControl3);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(768, 353);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Users/Admins";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.button1.Location = new System.Drawing.Point(7, 302);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(386, 44);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "Refresh Questions";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // listView1
+            // 
+            this.listView1.Location = new System.Drawing.Point(7, 28);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(386, 268);
+            this.listView1.TabIndex = 1;
+            this.listView1.UseCompatibleStateImageBehavior = false;
             // 
             // tabControl2
             // 
@@ -116,33 +121,18 @@
             this.tabPage5.Text = "Remove Questions";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // tabPage2
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.button3.Location = new System.Drawing.Point(638, 397);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(150, 44);
-            this.button3.TabIndex = 10;
-            this.button3.Text = "Back";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // listView1
-            // 
-            this.listView1.Location = new System.Drawing.Point(7, 28);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(386, 268);
-            this.listView1.TabIndex = 1;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.button1.Location = new System.Drawing.Point(7, 302);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(386, 44);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Refresh Questions";
-            this.button1.UseVisualStyleBackColor = true;
+            this.tabPage2.Controls.Add(this.button2);
+            this.tabPage2.Controls.Add(this.listView2);
+            this.tabPage2.Controls.Add(this.tabControl3);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(768, 353);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Users/Admins";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
@@ -195,6 +185,17 @@
             this.tabPage6.Text = "Remove Admin";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.button3.Location = new System.Drawing.Point(638, 397);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(150, 44);
+            this.button3.TabIndex = 10;
+            this.button3.Text = "Back";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // adminPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -207,8 +208,8 @@
             this.Load += new System.EventHandler(this.adminPanel_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
             this.tabControl2.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
             this.tabControl3.ResumeLayout(false);
             this.ResumeLayout(false);
 
