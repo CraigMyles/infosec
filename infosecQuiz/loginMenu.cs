@@ -35,11 +35,19 @@ namespace infosecQuiz
 
         private void button2_Click(object sender, EventArgs e)
         {
+            //ADMINISTRATIVE MENU BUTTON
 
+            //open admin panel
+            adminPanel myForm = new adminPanel();
+            this.Hide();
+            myForm.ShowDialog();
+            this.Show();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            //QUIT BUTTON
+
             Application.Exit();
         }
     }

@@ -38,11 +38,7 @@ namespace infosecQuiz
 
         private void authorisationMenu_Load(object sender, EventArgs e)
         {
-            // Attach Subitems to the ListView
-            //listView1.Columns.Add("Title", 30, HorizontalAlignment.Left);
-            //listView1.Columns.Add("ID", 20, HorizontalAlignment.Left);
-            //listView1.Columns.Add("Price", 40, HorizontalAlignment.Left);
-            //listView1.Columns.Add("Publi-Date", 50, HorizontalAlignment.Left);
+            getAuthorisedMachines();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -160,11 +156,20 @@ namespace infosecQuiz
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //FOR LISTING AUTHORISED MACHINES
+            getAuthorisedMachines();
+        }
 
+        private void listView1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void getAuthorisedMachines()
+        {
+            //FOR LISTING AUTHORISED MACHINES
             Console.WriteLine("clearing all view list data");
             listView1.Clear();
-            
+
 
             //GET DATA
             string apiUrl = "https://craig.im/infosec.php";
@@ -196,21 +201,23 @@ namespace infosecQuiz
             int lim = r.ResponseData.Length;
 
             Console.WriteLine("Beginning loop for data fill.");
-            for (int i = 0; i <= (lim-1); i++)
+            for (int i = 0; i <= (lim - 1); i++)
             {
-                Console.WriteLine("This is loop number "+ i);
-                string[] row = {r.ResponseData[i].commonName, r.ResponseData[i].processorID};
+                Console.WriteLine("This is loop number " + i);
+                string[] row = { r.ResponseData[i].commonName, r.ResponseData[i].processorID };
                 var listViewItem = new ListViewItem(row);
                 listView1.Items.Add(listViewItem);
                 row = null;
-
-
             }
-
         }
 
-        private void listView1_SelectedIndexChanged_1(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
+            //BACK BUTTON
+
+            //open login menu
+
+            this.Close();
 
         }
     }
