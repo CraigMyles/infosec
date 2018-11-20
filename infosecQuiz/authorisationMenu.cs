@@ -27,7 +27,7 @@ namespace infosecQuiz
         {
             public bool IsError { get; set; }
             public string ErrorMessage { get; set; }
-            public dynamic ResponseData { get; set; }
+            public RootObject[] ResponseData { get; set; }
         }
 
         public class Computer_Authorise
@@ -38,7 +38,11 @@ namespace infosecQuiz
 
         private void authorisationMenu_Load(object sender, EventArgs e)
         {
-
+            // Attach Subitems to the ListView
+            //listView1.Columns.Add("Title", 30, HorizontalAlignment.Left);
+            //listView1.Columns.Add("ID", 20, HorizontalAlignment.Left);
+            //listView1.Columns.Add("Price", 40, HorizontalAlignment.Left);
+            //listView1.Columns.Add("Publi-Date", 50, HorizontalAlignment.Left);
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -85,7 +89,7 @@ namespace infosecQuiz
             API_Response r = JsonConvert.DeserializeObject<API_Response>(response);
 
             // check response
-            if (!r.IsError && r.ResponseData == "SUCCESS")
+            if (!r.IsError)
             {
                 MessageBox.Show("This machine has been added successfully.");
             }
@@ -156,10 +160,11 @@ namespace infosecQuiz
 
         private void button2_Click(object sender, EventArgs e)
         {
-            DataTable dt = new DataTable();
+            //FOR LISTING AUTHORISED MACHINES
 
-            dt.Columns.Add("Common Name");
-            dt.Columns.Add("Processor");
+            Console.WriteLine("clearing all view list data");
+            listView1.Clear();
+            
 
             //GET DATA
             string apiUrl = "https://craig.im/infosec.php";
@@ -169,32 +174,44 @@ namespace infosecQuiz
 
             };
 
-            // make http post request
+            //Make http post request
             string response = Http.Post(apiUrl, new NameValueCollection()
                 {
                     { "api_method", apiMethod},
                     { "api_data",   JsonConvert.SerializeObject(thisComputer_Authorise) }
                 });
 
-            // decode json string
-            //API_Response r = JsonConvert.DeserializeObject<API_Response>(response);
-            //r = JsonConvert.DeserializeObject<API_Response>(response);
-            //List<r> r = r.ResponseData.ToObject<List<r>>();
+            //Deserialise
+            API_Response r = JsonConvert.DeserializeObject<API_Response>(response);
 
-            //var result = JsonConvert.DeserializeObject<API_Response>(r.ResponseData);
-            //dt.Rows.Add(new Object[] r);
+            //MessageBox.Show("" + r.ResponseData[0].commonName);
+
+            // Set to details view.
+            listView1.View = View.Details;
+            // Add both columns.
+            listView1.Columns.Add("CommonName", 200, HorizontalAlignment.Left);
+            listView1.Columns.Add("ComputerID", 200, HorizontalAlignment.Left);
+
+            //fill with data
+            int lim = r.ResponseData.Length;
+
+            Console.WriteLine("Beginning loop for data fill.");
+            for (int i = 0; i <= (lim-1); i++)
+            {
+                Console.WriteLine("This is loop number "+ i);
+                string[] row = {r.ResponseData[i].commonName, r.ResponseData[i].processorID};
+                var listViewItem = new ListViewItem(row);
+                listView1.Items.Add(listViewItem);
+                row = null;
 
 
-            //Rootobject r = JsonConvert.DeserializeObject<Rootobject>(response);
-            //dt.Rows.Add(new Object[] r);
+            }
 
-            //MessageBox.Show();
-             API_Response r = JsonConvert.DeserializeObject<List<RootObject>>(response);
-
-
-
-
-            //dataGridView1.DataSource = dt;
         }
-}
+
+        private void listView1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+    }
 }
