@@ -43,6 +43,15 @@ namespace infosecQuiz
             public string userID { get; set; }
         }
 
+        public class AddQuestions
+        {
+            public string question { get; set; }
+            public string answerA { get; set; }
+            public string answerB { get; set; }
+            public string correctAnswer { get; set; }
+
+        }
+
 
         public static class Http
         {
@@ -232,6 +241,53 @@ namespace infosecQuiz
                 MessageBox.Show("ERROR: " + r.ErrorMessage);
             }
 
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            //ADD QUESTION BUTTON
+
+            //get combo box selection as string
+            string selected = this.correctAnswer.GetItemText(this.correctAnswer.SelectedItem);
+            //Select last char from this string e.g. A or B
+            selected = selected.Substring(selected.Length - 1);
+
+
+            string apiUrl = "https://craig.im/infosec.php";
+            string apiMethod = "addQuestions";
+            AddQuestions addQuestions_Request = new AddQuestions()
+            {
+                question = question.Text,
+                answerA = answerA.Text,
+                answerB = answerB.Text,
+                correctAnswer = selected
+
+            };
+
+            // make http post request
+            string response = Http.Post(apiUrl, new NameValueCollection()
+                    {
+                        { "api_method", apiMethod},
+                        { "api_data",   JsonConvert.SerializeObject(addQuestions_Request) }
+                    });
+
+            // decode json string to object
+            API_Response r = JsonConvert.DeserializeObject<API_Response>(response);
+
+            // check response
+            if (!r.IsError)
+            {
+                //There was no errors when adding the account -> do this:
+                MessageBox.Show("Account Successfully removed.");
+                //clear text box
+                userID.Text = String.Empty;
+                //update lits
+                getUserList();
+            }
+            else
+            {
+                MessageBox.Show("ERROR: " + r.ErrorMessage);
+            }
         }
     }
 }

@@ -35,14 +35,14 @@
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.label15 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.correctAnswer = new System.Windows.Forms.ComboBox();
+            this.answerB = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.answerA = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.button7 = new System.Windows.Forms.Button();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.question = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.label8 = new System.Windows.Forms.Label();
@@ -136,14 +136,14 @@
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.label15);
-            this.tabPage4.Controls.Add(this.comboBox1);
-            this.tabPage4.Controls.Add(this.textBox8);
+            this.tabPage4.Controls.Add(this.correctAnswer);
+            this.tabPage4.Controls.Add(this.answerB);
             this.tabPage4.Controls.Add(this.label14);
-            this.tabPage4.Controls.Add(this.textBox7);
+            this.tabPage4.Controls.Add(this.answerA);
             this.tabPage4.Controls.Add(this.label13);
             this.tabPage4.Controls.Add(this.label11);
             this.tabPage4.Controls.Add(this.button7);
-            this.tabPage4.Controls.Add(this.textBox6);
+            this.tabPage4.Controls.Add(this.question);
             this.tabPage4.Controls.Add(this.label12);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
@@ -162,27 +162,27 @@
             this.label15.TabIndex = 23;
             this.label15.Text = "Choose the correct answer:";
             // 
-            // comboBox1
+            // correctAnswer
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "A",
-            "B"});
-            this.comboBox1.Location = new System.Drawing.Point(11, 273);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(169, 37);
-            this.comboBox1.TabIndex = 22;
-            this.comboBox1.Text = "Select one";
+            this.correctAnswer.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.correctAnswer.FormattingEnabled = true;
+            this.correctAnswer.Items.AddRange(new object[] {
+            "Answer A",
+            "Answer B"});
+            this.correctAnswer.Location = new System.Drawing.Point(11, 273);
+            this.correctAnswer.Name = "correctAnswer";
+            this.correctAnswer.Size = new System.Drawing.Size(169, 37);
+            this.correctAnswer.TabIndex = 22;
+            this.correctAnswer.Text = "Select one";
             // 
-            // textBox8
+            // answerB
             // 
-            this.textBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox8.Location = new System.Drawing.Point(11, 201);
-            this.textBox8.Multiline = true;
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(338, 35);
-            this.textBox8.TabIndex = 21;
+            this.answerB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.answerB.Location = new System.Drawing.Point(11, 201);
+            this.answerB.Multiline = true;
+            this.answerB.Name = "answerB";
+            this.answerB.Size = new System.Drawing.Size(338, 35);
+            this.answerB.TabIndex = 21;
             // 
             // label14
             // 
@@ -196,14 +196,14 @@
             this.label14.UseMnemonic = false;
             this.label14.UseWaitCursor = true;
             // 
-            // textBox7
+            // answerA
             // 
-            this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(11, 140);
-            this.textBox7.Multiline = true;
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(338, 35);
-            this.textBox7.TabIndex = 19;
+            this.answerA.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.answerA.Location = new System.Drawing.Point(11, 140);
+            this.answerA.Multiline = true;
+            this.answerA.Name = "answerA";
+            this.answerA.Size = new System.Drawing.Size(338, 35);
+            this.answerA.TabIndex = 19;
             // 
             // label13
             // 
@@ -223,9 +223,9 @@
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(3, 3);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(222, 26);
+            this.label11.Size = new System.Drawing.Size(191, 26);
             this.label11.TabIndex = 17;
-            this.label11.Text = "Removing a Question";
+            this.label11.Text = "Adding a Question";
             this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // button7
@@ -237,15 +237,16 @@
             this.button7.TabIndex = 16;
             this.button7.Text = "Add Question";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
-            // textBox6
+            // question
             // 
-            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(11, 52);
-            this.textBox6.Multiline = true;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(338, 62);
-            this.textBox6.TabIndex = 15;
+            this.question.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.question.Location = new System.Drawing.Point(11, 52);
+            this.question.Multiline = true;
+            this.question.Name = "question";
+            this.question.Size = new System.Drawing.Size(338, 62);
+            this.question.TabIndex = 15;
             // 
             // label12
             // 
@@ -587,7 +588,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox question;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button button6;
@@ -603,10 +604,10 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.ComboBox correctAnswer;
+        private System.Windows.Forms.TextBox answerB;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox answerA;
         private System.Windows.Forms.Label label13;
     }
 }
