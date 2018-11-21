@@ -38,6 +38,11 @@ namespace infosecQuiz
             public string username { get; set; }
             public string password { get; set; }
         }
+        public class RemoveUsers
+        {
+            public string userID { get; set; }
+        }
+
 
         public static class Http
         {
@@ -188,6 +193,44 @@ namespace infosecQuiz
 
         private void password_TextChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            //REMOVE USER BY ID BUTTON
+
+            string apiUrl = "https://craig.im/infosec.php";
+            string apiMethod = "removeUsers";
+            RemoveUsers removeUsers_Request = new RemoveUsers()
+            {
+                userID = userID.Text
+            };
+
+            // make http post request
+            string response = Http.Post(apiUrl, new NameValueCollection()
+                    {
+                        { "api_method", apiMethod},
+                        { "api_data",   JsonConvert.SerializeObject(removeUsers_Request) }
+                    });
+
+            // decode json string to object
+            API_Response r = JsonConvert.DeserializeObject<API_Response>(response);
+
+            // check response
+            if (!r.IsError)
+            {
+                //There was no errors when adding the account -> do this:
+                MessageBox.Show("Account Successfully removed.");
+                //clear text box
+                userID.Text = String.Empty;
+                //update lits
+                getUserList();
+            }
+            else
+            {
+                MessageBox.Show("ERROR: " + r.ErrorMessage);
+            }
 
         }
     }
