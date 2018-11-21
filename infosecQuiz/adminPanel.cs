@@ -33,6 +33,12 @@ namespace infosecQuiz
             public string username { get; set; }
         }
 
+        public class AddUsers
+        {
+            public string username { get; set; }
+            public string password { get; set; }
+        }
+
         public static class Http
         {
             public static String Post(string uri, NameValueCollection pairs)
@@ -120,6 +126,64 @@ namespace infosecQuiz
         private void label11_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            //CREATE ACCOUNT BUTTON
+
+            //check all fields are not empty
+            if (!username.Text.Equals("") && !password.Text.Equals("") && !passwordConfirm.Text.Equals(""))
+            {
+                if (password.Text == passwordConfirm.Text)
+                {
+                    //Check if username + passwords match on db
+                    //check database for entries
+                    string apiUrl = "https://craig.im/infosec.php";
+                    string apiMethod = "addUsers";
+                    AddUsers addUser_Request = new AddUsers()
+                    {
+                        username = username.Text,
+                        password = password.Text
+                    };
+
+                    // make http post request
+                    string response = Http.Post(apiUrl, new NameValueCollection()
+                    {
+                        { "api_method", apiMethod},
+                        { "api_data",   JsonConvert.SerializeObject(addUser_Request) }
+                    });
+
+                    // decode json string to object
+                    API_Response r = JsonConvert.DeserializeObject<API_Response>(response);
+
+                    // check response
+                    if (!r.IsError)
+                    {
+                        //There was no errors when adding the account -> do this:
+                        MessageBox.Show("Account added successfully.");
+                        //update lits
+                        getUserList();
+                    }
+                    else
+                    {
+                        MessageBox.Show("ERROR: " + r.ErrorMessage);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Passwords do not match.");
+                }
+            }
+
+            else if (username.Text.Equals("") || password.Text.Equals(""))
+            {
+                MessageBox.Show("You cannot leave the fields blank.");
+            }
+            else
+            {
+                MessageBox.Show("An error has occured.");
+            }
         }
     }
 }
