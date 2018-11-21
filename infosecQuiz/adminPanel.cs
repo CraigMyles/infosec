@@ -185,5 +185,10 @@ namespace infosecQuiz
                 MessageBox.Show("An error has occured.");
             }
         }
+
+        private void password_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

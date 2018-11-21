@@ -66,7 +66,7 @@
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.label3 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.userID = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
@@ -300,6 +300,7 @@
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(100, 39);
             this.textBox5.TabIndex = 15;
+            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label9
             // 
@@ -396,10 +397,9 @@
             // passwordConfirm
             // 
             this.passwordConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordConfirm.Location = new System.Drawing.Point(11, 207);
-            this.passwordConfirm.Multiline = true;
+            this.passwordConfirm.Location = new System.Drawing.Point(11, 212);
             this.passwordConfirm.Name = "passwordConfirm";
-            this.passwordConfirm.Size = new System.Drawing.Size(170, 39);
+            this.passwordConfirm.Size = new System.Drawing.Size(170, 44);
             this.passwordConfirm.TabIndex = 19;
             this.passwordConfirm.UseSystemPasswordChar = true;
             // 
@@ -407,7 +407,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(7, 184);
+            this.label7.Location = new System.Drawing.Point(7, 189);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(141, 20);
             this.label7.TabIndex = 18;
@@ -417,11 +417,11 @@
             // 
             this.password.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.password.Location = new System.Drawing.Point(11, 142);
-            this.password.Multiline = true;
             this.password.Name = "password";
-            this.password.Size = new System.Drawing.Size(170, 39);
+            this.password.Size = new System.Drawing.Size(170, 44);
             this.password.TabIndex = 17;
             this.password.UseSystemPasswordChar = true;
+            this.password.TextChanged += new System.EventHandler(this.password_TextChanged);
             // 
             // label6
             // 
@@ -436,17 +436,16 @@
             // username
             // 
             this.username.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.username.Location = new System.Drawing.Point(11, 77);
-            this.username.Multiline = true;
+            this.username.Location = new System.Drawing.Point(11, 72);
             this.username.Name = "username";
-            this.username.Size = new System.Drawing.Size(170, 39);
+            this.username.Size = new System.Drawing.Size(170, 44);
             this.username.TabIndex = 15;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(7, 54);
+            this.label5.Location = new System.Drawing.Point(7, 49);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(87, 20);
             this.label5.TabIndex = 14;
@@ -466,7 +465,7 @@
             // 
             this.tabPage6.Controls.Add(this.label3);
             this.tabPage6.Controls.Add(this.button4);
-            this.tabPage6.Controls.Add(this.textBox1);
+            this.tabPage6.Controls.Add(this.userID);
             this.tabPage6.Controls.Add(this.label2);
             this.tabPage6.Controls.Add(this.label1);
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
@@ -497,14 +496,15 @@
             this.button4.Text = "Remove";
             this.button4.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // userID
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(80, 141);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 39);
-            this.textBox1.TabIndex = 2;
+            this.userID.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userID.Location = new System.Drawing.Point(80, 141);
+            this.userID.Multiline = true;
+            this.userID.Name = "userID";
+            this.userID.Size = new System.Drawing.Size(100, 39);
+            this.userID.TabIndex = 2;
+            this.userID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label2
             // 
@@ -581,7 +581,7 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox userID;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label11;
