@@ -61,7 +61,17 @@ namespace infosecQuiz
         private void button1_Click(object sender, EventArgs e)
         {
             //Check if this computer is verified
+            checkCPU();
+        }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void checkCPU()
+        {
+            //check there is a record of this computer in the database
             string cpuInfo = string.Empty;
             ManagementClass mc = new ManagementClass("win32_processor");
             ManagementObjectCollection moc = mc.GetInstances();
@@ -102,20 +112,15 @@ namespace infosecQuiz
             // check response
             if (!r.IsError && r.ResponseData == "SUCCESS")
             {
-                MessageBox.Show("login successful");
+                //This computer is verified -> do this:
+                quiz myQuiz = new quiz();
+                this.Hide();
+                myQuiz.ShowDialog();
             }
             else
             {
                 MessageBox.Show("ERROR: " + r.ErrorMessage);
             }
-        
-
-
-    }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }
