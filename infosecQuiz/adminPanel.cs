@@ -278,7 +278,7 @@ namespace infosecQuiz
             if (!r.IsError)
             {
                 //There was no errors when adding the account -> do this:
-                MessageBox.Show("Account Successfully removed.");
+                MessageBox.Show("Question successfully added.");
                 //clear text box
                 userID.Text = String.Empty;
                 //update lits
