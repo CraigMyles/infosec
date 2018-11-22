@@ -148,7 +148,7 @@ namespace infosecQuiz
         {
             //FOR LISTING AUTHORISED MACHINES
             Console.WriteLine("clearing all view list data");
-            listView1.Clear();
+            listView2.Clear();
 
 
             //GET DATA
