@@ -18,6 +18,12 @@ namespace infosecQuiz
         {
             public string userID { get; set; }
             public string username { get; set; }
+
+            public string questionID { get; set; }
+            public string question { get; set; }
+            public string answerA { get; set; }
+            public string answerB { get; set; }
+            public string correctAnswer { get; set; }
         }
 
         public class API_Response
@@ -52,6 +58,20 @@ namespace infosecQuiz
 
         }
 
+        public class RemoveQuestions
+        {
+            public string questionID { get; set; }
+        }
+
+        public class GetQuestions
+        {
+            public string questionID { get; set; }
+            public string question { get; set; }
+            public string answerA { get; set; }
+            public string answerB { get; set; }
+            public string correctAnswer { get; set; }
+        }
+
 
         public static class Http
         {
@@ -75,14 +95,59 @@ namespace infosecQuiz
 
         private void getQuestionList()
         {
-            
+            //FOR LISTING AUTHORISED MACHINES
+            Console.WriteLine("clearing all view list data");
+            listView2.Clear();
+
+
+            //GET DATA
+            string apiUrl = "https://craig.im/infosec.php";
+            string apiMethod = "getQuestions";
+            GetQuestions thisGetQuesitons = new GetQuestions()
+            {
+
+            };
+
+
+            //Make http post request
+            string response = Http.Post(apiUrl, new NameValueCollection()
+            {
+                { "api_method", apiMethod},
+                { "api_data",   JsonConvert.SerializeObject(thisGetQuesitons) }
+            });
+
+            //Deserialise
+            API_Response r = JsonConvert.DeserializeObject<API_Response>(response);
+
+            //MessageBox.Show("" + r.ResponseData[0].commonName);
+
+            // Set to details view.
+            listView1.View = View.Details;
+            // Add both columns.
+            listView1.Columns.Add("ID", 25, HorizontalAlignment.Left);
+            listView1.Columns.Add("Question", 150, HorizontalAlignment.Left);
+            listView1.Columns.Add("Answer A", 60, HorizontalAlignment.Left);
+            listView1.Columns.Add("Answer B", 60, HorizontalAlignment.Left);
+            listView1.Columns.Add("Correct Answer", 85, HorizontalAlignment.Left);
+
+            //fill with data
+            int lim = r.ResponseData.Length;
+
+            for (int i = 0; i <= (lim - 1); i++)
+            {
+                Console.WriteLine("This is loop number " + i);
+                string[] row1 = { r.ResponseData[i].questionID, r.ResponseData[i].question, r.ResponseData[i].answerA, r.ResponseData[i].answerB, r.ResponseData[i].correctAnswer };
+                var listViewItem = new ListViewItem(row1);
+                listView1.Items.Add(listViewItem);
+                row1 = null;
+            }
         }
 
         private void getUserList()
         {
             //FOR LISTING AUTHORISED MACHINES
             Console.WriteLine("clearing all view list data");
-            listView2.Clear();
+            listView1.Clear();
 
 
             //GET DATA
@@ -289,5 +354,50 @@ namespace infosecQuiz
                 MessageBox.Show("ERROR: " + r.ErrorMessage);
             }
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            //Remove Question Button
+
+            string apiUrl = "https://craig.im/infosec.php";
+            string apiMethod = "removeQuestions";
+            RemoveQuestions removeQuestions_Request = new RemoveQuestions()
+            {
+                questionID = questionID.Text
+            };
+
+            // make http post request
+            string response = Http.Post(apiUrl, new NameValueCollection()
+            {
+                { "api_method", apiMethod},
+                { "api_data",   JsonConvert.SerializeObject(removeQuestions_Request) }
+            });
+
+            // decode json string to object
+            API_Response r = JsonConvert.DeserializeObject<API_Response>(response);
+
+            // check response
+            if (!r.IsError)
+            {
+                //There was no errors -> do this:
+                MessageBox.Show("Account Successfully removed.");
+                //clear text box
+                questionID.Text = String.Empty;
+                //update lits
+                getQuestionList();
+            }
+            else
+            {
+                MessageBox.Show("ERROR: " + r.ErrorMessage);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //Refresh Questions button
+            getQuestionList();
+        }
+
+
     }
 }

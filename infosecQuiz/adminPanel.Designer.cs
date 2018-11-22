@@ -47,7 +47,7 @@
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.label8 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.questionID = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -70,6 +70,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl2.SuspendLayout();
@@ -93,6 +94,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label16);
             this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.listView1);
             this.tabPage1.Controls.Add(this.tabControl2);
@@ -113,12 +115,14 @@
             this.button1.TabIndex = 11;
             this.button1.Text = "Refresh Questions";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // listView1
             // 
             this.listView1.Location = new System.Drawing.Point(7, 28);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(386, 268);
+            this.listView1.ShowItemToolTips = true;
+            this.listView1.Size = new System.Drawing.Size(386, 255);
             this.listView1.TabIndex = 1;
             this.listView1.UseCompatibleStateImageBehavior = false;
             // 
@@ -262,7 +266,7 @@
             // 
             this.tabPage5.Controls.Add(this.label8);
             this.tabPage5.Controls.Add(this.button6);
-            this.tabPage5.Controls.Add(this.textBox5);
+            this.tabPage5.Controls.Add(this.questionID);
             this.tabPage5.Controls.Add(this.label9);
             this.tabPage5.Controls.Add(this.label10);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
@@ -292,16 +296,17 @@
             this.button6.TabIndex = 16;
             this.button6.Text = "Remove";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // textBox5
+            // questionID
             // 
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(110, 140);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 39);
-            this.textBox5.TabIndex = 15;
-            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.questionID.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.questionID.Location = new System.Drawing.Point(110, 140);
+            this.questionID.Multiline = true;
+            this.questionID.Name = "questionID";
+            this.questionID.Size = new System.Drawing.Size(100, 39);
+            this.questionID.TabIndex = 15;
+            this.questionID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label9
             // 
@@ -351,6 +356,7 @@
             // 
             this.listView2.Location = new System.Drawing.Point(7, 26);
             this.listView2.Name = "listView2";
+            this.listView2.ShowItemToolTips = true;
             this.listView2.Size = new System.Drawing.Size(386, 268);
             this.listView2.TabIndex = 13;
             this.listView2.UseCompatibleStateImageBehavior = false;
@@ -538,6 +544,17 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label16.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label16.Location = new System.Drawing.Point(6, 286);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(367, 13);
+            this.label16.TabIndex = 12;
+            this.label16.Text = " - TIP: hover your mouse over fields which are too large to display on screen.";
+            // 
             // adminPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -550,6 +567,7 @@
             this.Load += new System.EventHandler(this.adminPanel_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.tabControl2.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
@@ -592,7 +610,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox questionID;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button button5;
@@ -609,5 +627,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox answerA;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label16;
     }
 }
