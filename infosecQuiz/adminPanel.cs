@@ -91,13 +91,14 @@ namespace infosecQuiz
         private void adminPanel_Load(object sender, EventArgs e)
         {
             getUserList();
+            getQuestionList();
         }
 
         private void getQuestionList()
         {
             //FOR LISTING AUTHORISED MACHINES
             Console.WriteLine("clearing all view list data");
-            listView2.Clear();
+            listView1.Clear();
 
 
             //GET DATA
