@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.questionNumber = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.questionLabel = new System.Windows.Forms.TextBox();
+            this.answerAText = new System.Windows.Forms.Button();
+            this.answerBText = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
@@ -44,41 +44,44 @@
             // 
             this.questionNumber.AutoSize = true;
             this.questionNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.questionNumber.Location = new System.Drawing.Point(46, 40);
+            this.questionNumber.Location = new System.Drawing.Point(43, 40);
             this.questionNumber.Name = "questionNumber";
             this.questionNumber.Size = new System.Drawing.Size(199, 37);
             this.questionNumber.TabIndex = 0;
             this.questionNumber.Text = "Question n/n";
             // 
-            // textBox1
+            // questionLabel
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(50, 80);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(600, 200);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.TabStop = false;
-            this.textBox1.Text = "example question lorem ipsum";
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.questionLabel.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.questionLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.questionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.questionLabel.Location = new System.Drawing.Point(53, 115);
+            this.questionLabel.Multiline = true;
+            this.questionLabel.Name = "questionLabel";
+            this.questionLabel.Size = new System.Drawing.Size(600, 200);
+            this.questionLabel.TabIndex = 1;
+            this.questionLabel.TabStop = false;
+            this.questionLabel.Text = "example question lorem ipsum";
             // 
-            // button1
+            // answerAText
             // 
-            this.button1.Location = new System.Drawing.Point(50, 479);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(300, 150);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "exampleanswer1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.answerAText.Location = new System.Drawing.Point(50, 479);
+            this.answerAText.Name = "answerAText";
+            this.answerAText.Size = new System.Drawing.Size(300, 150);
+            this.answerAText.TabIndex = 2;
+            this.answerAText.Text = "exampleanswer1";
+            this.answerAText.UseVisualStyleBackColor = true;
+            this.answerAText.Click += new System.EventHandler(this.answerA_Click);
             // 
-            // button2
+            // answerBText
             // 
-            this.button2.Location = new System.Drawing.Point(350, 479);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(300, 150);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "exampleanswer2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.answerBText.Location = new System.Drawing.Point(350, 479);
+            this.answerBText.Name = "answerBText";
+            this.answerBText.Size = new System.Drawing.Size(300, 150);
+            this.answerBText.TabIndex = 3;
+            this.answerBText.Text = "exampleanswer2";
+            this.answerBText.UseVisualStyleBackColor = true;
+            this.answerBText.Click += new System.EventHandler(this.answerB_Click);
             // 
             // label1
             // 
@@ -123,7 +126,6 @@
             this.label3.Size = new System.Drawing.Size(171, 37);
             this.label3.TabIndex = 8;
             this.label3.Text = "Reputation";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
@@ -134,9 +136,8 @@
             this.label4.Size = new System.Drawing.Size(124, 37);
             this.label4.TabIndex = 9;
             this.label4.Text = "Viruses";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
-            // Form1
+            // quiz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -147,12 +148,13 @@
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.answerBText);
+            this.Controls.Add(this.answerAText);
+            this.Controls.Add(this.questionLabel);
             this.Controls.Add(this.questionNumber);
-            this.Name = "Form1";
+            this.Name = "quiz";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.quiz_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -161,9 +163,9 @@
         #endregion
 
         private System.Windows.Forms.Label questionNumber;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox questionLabel;
+        private System.Windows.Forms.Button answerAText;
+        private System.Windows.Forms.Button answerBText;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ProgressBar progressBar1;
