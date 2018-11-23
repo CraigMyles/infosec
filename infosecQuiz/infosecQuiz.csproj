@@ -80,6 +80,7 @@
     <Compile Include="authorisationMenu.Designer.cs">
       <DependentUpon>authorisationMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="modifyVerticleProgressBar.cs" />
     <Compile Include="quiz.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +107,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="verticleProgressBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <EmbeddedResource Include="adminPanel.resx">
       <DependentUpon>adminPanel.cs</DependentUpon>
     </EmbeddedResource>

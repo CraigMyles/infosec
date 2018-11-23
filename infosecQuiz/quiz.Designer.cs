@@ -35,9 +35,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.reputationBar = new System.Windows.Forms.ProgressBar();
-            this.virusesBar = new System.Windows.Forms.ProgressBar();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.verticleProgressBar1 = new infosecQuiz.verticleProgressBar();
             this.SuspendLayout();
             // 
             // questionNumber
@@ -110,13 +110,6 @@
             this.reputationBar.Size = new System.Drawing.Size(45, 549);
             this.reputationBar.TabIndex = 6;
             // 
-            // virusesBar
-            // 
-            this.virusesBar.Location = new System.Drawing.Point(1135, 80);
-            this.virusesBar.Name = "virusesBar";
-            this.virusesBar.Size = new System.Drawing.Size(45, 549);
-            this.virusesBar.TabIndex = 7;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -131,20 +124,28 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(1005, 592);
+            this.label4.Location = new System.Drawing.Point(1019, 592);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(124, 37);
+            this.label4.Size = new System.Drawing.Size(110, 37);
             this.label4.TabIndex = 9;
-            this.label4.Text = "Viruses";
+            this.label4.Text = "Threat";
+            // 
+            // verticleProgressBar1
+            // 
+            this.verticleProgressBar1.Location = new System.Drawing.Point(1135, 80);
+            this.verticleProgressBar1.Name = "verticleProgressBar1";
+            this.verticleProgressBar1.Size = new System.Drawing.Size(45, 549);
+            this.verticleProgressBar1.TabIndex = 10;
+            this.verticleProgressBar1.Click += new System.EventHandler(this.verticleProgressBar1_Click);
             // 
             // quiz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.verticleProgressBar1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.virusesBar);
             this.Controls.Add(this.reputationBar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -169,9 +170,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ProgressBar reputationBar;
-        private System.Windows.Forms.ProgressBar virusesBar;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private verticleProgressBar verticleProgressBar1;
     }
 }
 

@@ -22,11 +22,20 @@ namespace infosecQuiz
         List<String> correctAnswer = new List<string>();
 
         int currentScore = 0;
+
+        //starts at 0 but will rise
+        int threat = 0;
         //initalise current correct answer
         String currentCorrectAnswer = "";
 
+        int currentQuestion;
+        int numQuestions;
 
-    public quiz()
+        private System.Windows.Forms.Timer timer1;
+        private int counter = 0;
+
+
+        public quiz()
         {
             InitializeComponent();
         }
@@ -80,7 +89,8 @@ namespace infosecQuiz
             int currentQuestion = 0;
 
             //begin game
-            loadQuestion(currentQuestion, numQuestions);
+            beginTimer();
+            loadQuestion();
         }
 
         private string getQuestions()
@@ -119,7 +129,7 @@ namespace infosecQuiz
             }
         }
 
-        public String loadQuestion(int currentQuestion, int numQuestions)
+        public String loadQuestion()
         {
             int i = currentQuestion;
             int lim = numQuestions;
@@ -155,9 +165,11 @@ namespace infosecQuiz
 
         private void answerB_Click(object sender, EventArgs e)
         {
+            
             if (String.Equals(currentCorrectAnswer, "B"))
             {
                 correct();
+                resetThreat();
             }
             else
             {
@@ -169,7 +181,8 @@ namespace infosecQuiz
         {
             //increase score
             currentScore++;
-            
+            resetThreat();
+            loadQuestion();
             //progress bar management todo
 
         }
@@ -177,6 +190,44 @@ namespace infosecQuiz
         public void incorrect()
         {
             //progress bar management todo
+            
+        }
+
+        public void resetThreat()
+        {
+            verticleProgressBar1.Value = 0;
+            modifyVerticleProgressBar.SetState(verticleProgressBar1, 2);
+        }
+
+        private void verticleProgressBar1_Click(object sender, EventArgs e)
+        {
+            verticleProgressBar1.Value = 0;
+            verticleProgressBar1.Value = 100;
+            modifyVerticleProgressBar.SetState(verticleProgressBar1, 2);
+
+        }
+
+        private void beginTimer()
+        {
+            timer1 = new System.Windows.Forms.Timer();
+            timer1.Tick += new EventHandler(timer1_Tick);
+            timer1.Interval = 1000; // 1 second
+            verticleProgressBar1.Value = 0;
+            timer1.Start();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            counter++;
+
+            if (verticleProgressBar1.Value == 100)
+            {
+                timer1.Stop();
+                MessageBox.Show("GAME OVER!!");
+                return;
+            }
+            verticleProgressBar1.Value = (verticleProgressBar1.Value+10);
+            modifyVerticleProgressBar.SetState(verticleProgressBar1, 2);
         }
     }
 }
