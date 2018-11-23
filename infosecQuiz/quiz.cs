@@ -156,6 +156,8 @@ namespace infosecQuiz
             if(String.Equals(currentCorrectAnswer, "A"))
             {
                 correct();
+                //reset the threat timer/counter
+                counter = 0;
             }
             else
             {
