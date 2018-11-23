@@ -169,22 +169,3 @@ namespace infosecQuiz
         }
     }
 }
-
-////get question count
-//int lim = r.ResponseData.Length;
-
-////reputation starts at full.
-//int reputation = lim;
-
-//int threat = 0;
-
-
-////set text for question
-//for (int i = 0; i <= (lim - 1); i++)
-//{
-//questionNumber.Text = "Question " + i + "/" + lim;
-//questionLabel.Text = r.ResponseData[i].question;
-//answerAText.Text = r.ResponseData[i].answerA;
-//answerBText.Text = r.ResponseData[i].answerB;
-//string correctAnswer = r.ResponseData[i].correctAnswer;
-//}
