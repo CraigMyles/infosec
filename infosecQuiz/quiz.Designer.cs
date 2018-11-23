@@ -34,8 +34,8 @@
             this.answerBText = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.progressBar2 = new System.Windows.Forms.ProgressBar();
+            this.reputationBar = new System.Windows.Forms.ProgressBar();
+            this.virusesBar = new System.Windows.Forms.ProgressBar();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -103,19 +103,19 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "Answer 2";
             // 
-            // progressBar1
+            // reputationBar
             // 
-            this.progressBar1.Location = new System.Drawing.Point(934, 80);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(45, 549);
-            this.progressBar1.TabIndex = 6;
+            this.reputationBar.Location = new System.Drawing.Point(934, 80);
+            this.reputationBar.Name = "reputationBar";
+            this.reputationBar.Size = new System.Drawing.Size(45, 549);
+            this.reputationBar.TabIndex = 6;
             // 
-            // progressBar2
+            // virusesBar
             // 
-            this.progressBar2.Location = new System.Drawing.Point(1135, 80);
-            this.progressBar2.Name = "progressBar2";
-            this.progressBar2.Size = new System.Drawing.Size(45, 549);
-            this.progressBar2.TabIndex = 7;
+            this.virusesBar.Location = new System.Drawing.Point(1135, 80);
+            this.virusesBar.Name = "virusesBar";
+            this.virusesBar.Size = new System.Drawing.Size(45, 549);
+            this.virusesBar.TabIndex = 7;
             // 
             // label3
             // 
@@ -144,8 +144,8 @@
             this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.progressBar2);
-            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.virusesBar);
+            this.Controls.Add(this.reputationBar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.answerBText);
@@ -168,8 +168,8 @@
         private System.Windows.Forms.Button answerBText;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.ProgressBar progressBar2;
+        private System.Windows.Forms.ProgressBar reputationBar;
+        private System.Windows.Forms.ProgressBar virusesBar;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
     }

@@ -21,8 +21,10 @@ namespace infosecQuiz
         List<String> answerB = new List<string>();
         List<String> correctAnswer = new List<string>();
 
+        int currentScore = 0;
         //initalise current correct answer
         String currentCorrectAnswer = "";
+
 
     public quiz()
         {
@@ -129,17 +131,12 @@ namespace infosecQuiz
 
             }
             //-> the user has not completed the game:
-
             questionNumber.Text = "Question " + (i+1) + "/" + lim;
             questionLabel.Text = question[i];
             answerAText.Text = answerA[i];
             answerBText.Text = answerB[i];
 
             return currentCorrectAnswer = correctAnswer[i];
-            
-
-
-            //^^ THIS MIGHT NOT WORK BECAUSE OF THE I?
 
 
         }
@@ -148,11 +145,11 @@ namespace infosecQuiz
         {
             if(String.Equals(currentCorrectAnswer, "A"))
             {
-                MessageBox.Show("Correct!!!");
+                correct();
             }
             else
             {
-                MessageBox.Show("INCORRECT!!!, correct current answer:"+currentCorrectAnswer);
+                incorrect();
             }
         }
 
@@ -160,12 +157,26 @@ namespace infosecQuiz
         {
             if (String.Equals(currentCorrectAnswer, "B"))
             {
-                MessageBox.Show("Correct!!!");
+                correct();
             }
             else
             {
-                MessageBox.Show("INCORRECT!!! ,correct current answer: "+currentCorrectAnswer);
+                incorrect();
             }
+        }
+
+        public void correct()
+        {
+            //increase score
+            currentScore++;
+            
+            //progress bar management todo
+
+        }
+
+        public void incorrect()
+        {
+            //progress bar management todo
         }
     }
 }
