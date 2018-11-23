@@ -22,13 +22,11 @@ namespace infosecQuiz
         List<String> correctAnswer = new List<string>();
 
         int currentScore = 0;
-
-        //starts at 0 but will rise
-        int threat = 0;
+        
         //initalise current correct answer
         String currentCorrectAnswer = "";
 
-        int currentQuestion;
+        int currentQuestion = 0;
         int numQuestions;
 
         private System.Windows.Forms.Timer timer1;
@@ -119,6 +117,8 @@ namespace infosecQuiz
         {
             //Deserialise
             API_Response r = JsonConvert.DeserializeObject<API_Response>(data);
+            numQuestions = r.ResponseData.Length;
+            MessageBox.Show("Num questions:" +numQuestions);
             //populate array
             for (int i = 0; i <= (r.ResponseData.Length - 1); i++)
             {
@@ -131,22 +131,19 @@ namespace infosecQuiz
 
         public String loadQuestion()
         {
-            int i = currentQuestion;
-            int lim = numQuestions;
-
-
-            if (i == lim)
+            if (currentQuestion == numQuestions)
             {
                 //Do something because the user has finished the game
+                
 
             }
             //-> the user has not completed the game:
-            questionNumber.Text = "Question " + (i+1) + "/" + lim;
-            questionLabel.Text = question[i];
-            answerAText.Text = answerA[i];
-            answerBText.Text = answerB[i];
+            questionNumber.Text = "Question " + (currentQuestion + 1) + "/" + numQuestions;
+            questionLabel.Text = question[currentQuestion];
+            answerAText.Text = answerA[currentQuestion];
+            answerBText.Text = answerB[currentQuestion];
 
-            return currentCorrectAnswer = correctAnswer[i];
+            return currentCorrectAnswer = correctAnswer[currentQuestion];
 
 
         }
@@ -169,7 +166,6 @@ namespace infosecQuiz
             if (String.Equals(currentCorrectAnswer, "B"))
             {
                 correct();
-                resetThreat();
             }
             else
             {
@@ -177,26 +173,37 @@ namespace infosecQuiz
             }
         }
 
-        public void correct()
+        public void correct() //Run this when user selected the correct answer
         {
+            
             //increase score
             currentScore++;
+
             resetThreat();
+            currentQuestion++;
             loadQuestion();
             //progress bar management todo
 
         }
 
-        public void incorrect()
+        public void incorrect() //Run this when user selected the incorrect answer
         {
             //progress bar management todo
-            
+            lowerReputation();
+            currentQuestion++;
+            loadQuestion();
         }
 
         public void resetThreat()
         {
             verticleProgressBar1.Value = 0;
             modifyVerticleProgressBar.SetState(verticleProgressBar1, 2);
+        }
+
+        public void lowerReputation()
+        {
+            verticleProgressBar2.Value = 0;
+            modifyVerticleProgressBar.SetState(verticleProgressBar2, 1);
         }
 
         private void verticleProgressBar1_Click(object sender, EventArgs e)
