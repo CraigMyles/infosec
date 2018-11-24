@@ -34,13 +34,14 @@
             this.password = new System.Windows.Forms.TextBox();
             this.loginButton = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // username
             // 
             this.username.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.username.Location = new System.Drawing.Point(73, 303);
+            this.username.Location = new System.Drawing.Point(73, 272);
             this.username.Name = "username";
             this.username.Size = new System.Drawing.Size(242, 44);
             this.username.TabIndex = 0;
@@ -50,7 +51,7 @@
             // 
             this.usernameLabel.AutoSize = true;
             this.usernameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usernameLabel.Location = new System.Drawing.Point(69, 280);
+            this.usernameLabel.Location = new System.Drawing.Point(69, 249);
             this.usernameLabel.Name = "usernameLabel";
             this.usernameLabel.Size = new System.Drawing.Size(83, 20);
             this.usernameLabel.TabIndex = 1;
@@ -61,7 +62,7 @@
             // 
             this.passwordLabel.AutoSize = true;
             this.passwordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordLabel.Location = new System.Drawing.Point(69, 362);
+            this.passwordLabel.Location = new System.Drawing.Point(69, 331);
             this.passwordLabel.Name = "passwordLabel";
             this.passwordLabel.Size = new System.Drawing.Size(78, 20);
             this.passwordLabel.TabIndex = 3;
@@ -71,7 +72,7 @@
             // password
             // 
             this.password.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.password.Location = new System.Drawing.Point(73, 385);
+            this.password.Location = new System.Drawing.Point(73, 354);
             this.password.Name = "password";
             this.password.Size = new System.Drawing.Size(242, 44);
             this.password.TabIndex = 2;
@@ -81,7 +82,7 @@
             // loginButton
             // 
             this.loginButton.Font = new System.Drawing.Font("Microsoft PhagsPa", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loginButton.Location = new System.Drawing.Point(130, 464);
+            this.loginButton.Location = new System.Drawing.Point(130, 417);
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(125, 50);
             this.loginButton.TabIndex = 4;
@@ -92,18 +93,30 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::infosecQuiz.Properties.Resources.if_Account_1891016;
-            this.pictureBox1.Location = new System.Drawing.Point(105, 56);
+            this.pictureBox1.Location = new System.Drawing.Point(105, 44);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(175, 175);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft PhagsPa", 24F);
+            this.button1.Location = new System.Drawing.Point(130, 499);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(125, 50);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Back";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 561);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.loginButton);
             this.Controls.Add(this.passwordLabel);
@@ -126,5 +139,6 @@
         private System.Windows.Forms.TextBox password;
         private System.Windows.Forms.Button loginButton;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button button1;
     }
 }

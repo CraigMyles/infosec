@@ -88,6 +88,8 @@ namespace infosecQuiz
 
         }
 
+        
+
         public static class Http
         {
             public static String Post(string uri, NameValueCollection pairs)
@@ -119,6 +121,13 @@ namespace infosecQuiz
         private void username_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            home myFormHome = new home();
+            myFormHome.ShowDialog();
+            this.Hide();
         }
     }
 }
