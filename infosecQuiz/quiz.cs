@@ -33,6 +33,8 @@ namespace infosecQuiz
         private int counter = 0;
 
 
+
+
         public quiz()
         {
             InitializeComponent();
@@ -118,7 +120,6 @@ namespace infosecQuiz
             //Deserialise
             API_Response r = JsonConvert.DeserializeObject<API_Response>(data);
             numQuestions = r.ResponseData.Length;
-            MessageBox.Show("Num questions:" +numQuestions);
             //populate array
             for (int i = 0; i <= (r.ResponseData.Length - 1); i++)
             {
@@ -129,21 +130,28 @@ namespace infosecQuiz
             }
         }
 
-        public String loadQuestion()
+        public void loadQuestion()
         {
             if (currentQuestion == numQuestions)
             {
-                //Do something because the user has finished the game
-                
+                //Do something because the user has answered all questions
+                timer1.Stop();
+                //Launch score screen.
+
+
+                return;
 
             }
-            //-> the user has not completed the game:
-            questionNumber.Text = "Question " + (currentQuestion + 1) + "/" + numQuestions;
-            questionLabel.Text = question[currentQuestion];
-            answerAText.Text = answerA[currentQuestion];
-            answerBText.Text = answerB[currentQuestion];
+            else
+            {
+                //-> the user has not completed the game:
+                questionNumber.Text = "Question " + (currentQuestion + 1) + "/" + numQuestions;
+                questionLabel.Text = question[currentQuestion];
+                answerAText.Text = answerA[currentQuestion];
+                answerBText.Text = answerB[currentQuestion];
 
-            return currentCorrectAnswer = correctAnswer[currentQuestion];
+                currentCorrectAnswer = correctAnswer[currentQuestion];
+            }
 
 
         }
