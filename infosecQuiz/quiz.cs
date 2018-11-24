@@ -86,6 +86,9 @@ namespace infosecQuiz
             //Get number of questions
             int numQuestions = question.Count;
 
+            //set reputation to max for start
+            verticleProgressBar2.Value = 100;
+            modifyVerticleProgressBar.SetState(verticleProgressBar2, 1);
             //begin game
             beginTimer();
             loadQuestion();
@@ -210,7 +213,7 @@ namespace infosecQuiz
 
         public void lowerReputation()
         {
-            verticleProgressBar2.Value = 0;
+            verticleProgressBar2.Value = (verticleProgressBar2.Value - (100/numQuestions));
             modifyVerticleProgressBar.SetState(verticleProgressBar2, 1);
         }
 
