@@ -51,11 +51,10 @@ namespace infosecQuiz
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show("Feature to be added soon.");
-            //Display login.cs and kill current menu
-            scores myform = new scores();
+            //open teacher menu 
+            login myFormLogin = new login();
             this.Hide();
-            myform.ShowDialog();
+            myFormLogin.ShowDialog();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -121,6 +120,13 @@ namespace infosecQuiz
             {
                 MessageBox.Show("ERROR: " + r.ErrorMessage);
             }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            scores myScores = new scores();
+            this.Hide();
+            myScores.ShowDialog();
         }
     }
 }

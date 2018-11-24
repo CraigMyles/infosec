@@ -108,9 +108,9 @@ namespace infosecQuiz
 
         private void mainMenuButton_Click(object sender, EventArgs e)
         {
-            home myform = new home();
+            home myFormHome = new home();
             this.Hide();
-            myform.ShowDialog();
+            myFormHome.ShowDialog();
             this.Close();
         }
     }
