@@ -238,7 +238,9 @@ namespace infosecQuiz
             if (verticleProgressBar1.Value == 100)
             {
                 timer1.Stop();
-                MessageBox.Show("GAME OVER!!");
+                quizLose myFormQuizLose = new quizLose();
+                this.Hide();
+                myFormQuizLose.ShowDialog();
                 return;
             }
             verticleProgressBar1.Value = (verticleProgressBar1.Value+10);

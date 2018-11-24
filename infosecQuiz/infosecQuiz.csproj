@@ -126,6 +126,12 @@
     <Compile Include="quizCompleted.Designer.cs">
       <DependentUpon>quizCompleted.cs</DependentUpon>
     </Compile>
+    <Compile Include="quizLose.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="quizLose.Designer.cs">
+      <DependentUpon>quizLose.cs</DependentUpon>
+    </Compile>
     <Compile Include="scores.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,6 +171,9 @@
     </Compile>
     <EmbeddedResource Include="quizCompleted.resx">
       <DependentUpon>quizCompleted.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="quizLose.resx">
+      <DependentUpon>quizLose.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="scores.resx">
       <DependentUpon>scores.cs</DependentUpon>
