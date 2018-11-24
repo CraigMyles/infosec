@@ -137,7 +137,9 @@ namespace infosecQuiz
                 //Do something because the user has answered all questions
                 timer1.Stop();
                 //Launch score screen.
-
+                quizCompleted myform = new quizCompleted(currentScore, numQuestions);
+                this.Hide();
+                myform.ShowDialog();
 
                 return;
 
