@@ -34,6 +34,8 @@
             this.button3 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.resetScoresButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -50,7 +52,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(12, 193);
+            this.button1.Location = new System.Drawing.Point(12, 118);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(360, 76);
             this.button1.TabIndex = 1;
@@ -61,7 +63,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(12, 337);
+            this.button2.Location = new System.Drawing.Point(12, 223);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(360, 76);
             this.button2.TabIndex = 2;
@@ -76,7 +78,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(360, 76);
             this.button3.TabIndex = 3;
-            this.button3.Text = "Quit";
+            this.button3.Text = "Main Menu";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -85,7 +87,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.label2.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label2.Location = new System.Drawing.Point(17, 272);
+            this.label2.Location = new System.Drawing.Point(12, 197);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(308, 13);
             this.label2.TabIndex = 4;
@@ -96,17 +98,41 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.label3.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label3.Location = new System.Drawing.Point(17, 416);
+            this.label3.Location = new System.Drawing.Point(9, 302);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(210, 13);
             this.label3.TabIndex = 5;
             this.label3.Text = " - Management of the game and its settings";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label4.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label4.Location = new System.Drawing.Point(9, 407);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(285, 13);
+            this.label4.TabIndex = 7;
+            this.label4.Text = " - Reset the scores and the highscores on the Scores page";
+            // 
+            // resetScoresButton
+            // 
+            this.resetScoresButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resetScoresButton.Location = new System.Drawing.Point(12, 328);
+            this.resetScoresButton.Name = "resetScoresButton";
+            this.resetScoresButton.Size = new System.Drawing.Size(360, 76);
+            this.resetScoresButton.TabIndex = 6;
+            this.resetScoresButton.Text = "Reset Scores";
+            this.resetScoresButton.UseVisualStyleBackColor = true;
+            this.resetScoresButton.Click += new System.EventHandler(this.resetScoresButton_Click);
             // 
             // loginMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 561);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.resetScoresButton);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button3);
@@ -128,5 +154,7 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button resetScoresButton;
     }
 }

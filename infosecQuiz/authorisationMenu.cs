@@ -88,6 +88,7 @@ namespace infosecQuiz
             if (!r.IsError)
             {
                 MessageBox.Show("This machine has been added successfully.");
+                getAuthorisedMachines();
             }
             else
             {
@@ -120,27 +121,27 @@ namespace infosecQuiz
             //Add this computer to the auth list
 
             string apiUrl = "https://craig.im/infosec.php";
-            string apiMethod = "listCPU";
+            string apiMethod = "removeCPU";
             Computer_Authorise thisComputer_Authorise = new Computer_Authorise()
             {
-
+                commonName = textBox1.Text,
             };
 
             // make http post request
             string response = Http.Post(apiUrl, new NameValueCollection()
-                {
-                    { "api_method", apiMethod},
-                    { "api_data",   JsonConvert.SerializeObject(thisComputer_Authorise) }
-                });
+            {
+                { "api_method", apiMethod},
+                { "api_data",   JsonConvert.SerializeObject(thisComputer_Authorise) }
+            });
 
-            // decode json string
-            //API_Response r = JsonConvert.DeserializeObject<API_Response>(response);
+            // decode json string to object
             API_Response r = JsonConvert.DeserializeObject<API_Response>(response);
 
             // check response
             if (!r.IsError)
             {
-                MessageBox.Show("" + r.ResponseData);
+                MessageBox.Show("This machine has been removed successfully.");
+                getAuthorisedMachines();
             }
             else
             {
