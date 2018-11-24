@@ -31,7 +31,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.scoresButton = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -74,19 +73,6 @@
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // scoresButton
-            // 
-            this.scoresButton.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.scoresButton.Font = new System.Drawing.Font("Bahnschrift Condensed", 45F);
-            this.scoresButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.scoresButton.Location = new System.Drawing.Point(448, 565);
-            this.scoresButton.Name = "scoresButton";
-            this.scoresButton.Size = new System.Drawing.Size(175, 100);
-            this.scoresButton.TabIndex = 1;
-            this.scoresButton.Text = "Scores";
-            this.scoresButton.UseVisualStyleBackColor = false;
-            this.scoresButton.Click += new System.EventHandler(this.button2_Click);
-            // 
             // button4
             // 
             this.button4.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -108,7 +94,6 @@
             this.ClientSize = new System.Drawing.Size(1260, 677);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.scoresButton);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -123,7 +108,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button scoresButton;
         private System.Windows.Forms.Button button4;
     }
 }
