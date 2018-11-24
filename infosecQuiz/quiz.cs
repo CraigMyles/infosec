@@ -86,8 +86,6 @@ namespace infosecQuiz
             //Get number of questions
             int numQuestions = question.Count;
 
-            int currentQuestion = 0;
-
             //begin game
             beginTimer();
             loadQuestion();
