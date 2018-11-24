@@ -53,7 +53,7 @@ namespace infosecQuiz
         {
             //MessageBox.Show("Feature to be added soon.");
             //Display login.cs and kill current menu
-            login myform = new login();
+            scores myform = new scores();
             this.Hide();
             myform.ShowDialog();
         }
