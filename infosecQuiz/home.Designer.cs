@@ -99,6 +99,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "home";
             this.Text = "home";
+            this.Load += new System.EventHandler(this.home_Load);
             this.ResumeLayout(false);
 
         }

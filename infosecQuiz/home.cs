@@ -118,7 +118,7 @@ namespace infosecQuiz
             }
             else
             {
-                MessageBox.Show("ERROR: " + r.ErrorMessage);
+                MessageBox.Show("ERROR: " + r.ErrorMessage + "\n\n" + "Please ask your teacher to approve this machine.", "Computer Authorisation");
             }
         }
 
@@ -127,6 +127,11 @@ namespace infosecQuiz
             scores myScores = new scores();
             this.Hide();
             myScores.ShowDialog();
+        }
+
+        private void home_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
